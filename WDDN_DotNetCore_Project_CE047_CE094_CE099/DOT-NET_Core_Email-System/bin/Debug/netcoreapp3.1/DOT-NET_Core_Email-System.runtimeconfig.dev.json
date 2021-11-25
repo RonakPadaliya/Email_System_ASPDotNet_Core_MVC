@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\ronak\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\ronak\\.nuget\\packages"
+    ]
+  }
+}

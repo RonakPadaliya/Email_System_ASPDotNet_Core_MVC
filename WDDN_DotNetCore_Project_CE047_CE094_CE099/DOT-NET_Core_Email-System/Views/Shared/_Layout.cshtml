@@ -1,0 +1,162 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/sidebar.css" />
+    <link rel="stylesheet" href="~/css/footer.css" />
+    <link rel="stylesheet" href="~/css/compose-profile.css" />
+    <!--Use for bootstrap icon-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        @if (HttpContextAccessor.HttpContext.Session.GetString("_UserName") != null)
+        {
+            <div class="wrapper">
+                <!-- Sidebar  -->
+                <nav id="sidebar">
+                    <div class="sidebar-header" >
+                        <h4>Email System</h4>
+                    </div>
+
+                    <div class="compose-button p-2" style="text-align: center">
+
+                        <a href="/Sidebar/Compose"><i class="far fa-edit"></i>&nbsp;&nbsp;Compose</a>
+                    </div>
+
+                    <ul class="list-unstyled components">
+                        <li class="active">
+                            <a href="/Sidebar/Inbox" title="Inbox"><i class="fa fa-inbox" aria-hidden="true"></i>&nbsp;&nbsp;Inbox</a>
+                        </li>
+                        <li>
+                            <a href="/Sidebar/Starred" title="Starred"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;Starred</a>
+                        </li>
+                        <li>
+                            <a href="/Sidebar/Sent" title="Sent"><i class="fa fa-paper-plane" aria-hidden="true"></i>&nbsp;&nbsp;Sent</a>
+                        </li>
+                        <li>
+                            <a href="/Sidebar/Trash" title="Trash"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;&nbsp;Trash</a>
+                        </li>
+                        <li>
+                            <a href="/Sidebar/About" title="About"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;&nbsp;About</a>
+                        </li>
+                        <li>
+                            <a href="/Sidebar/Contact" title="Contact"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;Contact</a>
+                        </li>
+                    </ul>
+
+                    <ul class="list-unstyled CTAs">
+                        <li>
+                            <a class="nav-link text-dark download"  href="/Account/Profile" title="Profile"><h4 style="color:black;">Profile</h4></a>
+                        </li>
+                        <li>
+                            <form class="form-inline" asp-controller="Account" asp-action="Logout">
+                                <button type="submit" class="btn btn-light btn-lg btn-block" title="Logout" style="color:black;">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Page Content  -->
+                <div id="content">
+
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="container-fluid">
+
+                            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                                <i class="fas fa-align-left"></i>
+                                <span>Toggle Sidebar</span>
+                            </button>
+                        </div>
+                    </nav>
+
+                    <div class="container">
+                        <main role="main" class="pb-3">
+                            @RenderBody()
+                        </main>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="border-top footer text-muted">
+                <div class="container">
+                    &copy; Copyright! © 2021.. All rights reserved.&nbsp;&nbsp;&nbsp; <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </div>
+            </footer> }
+        else
+        {
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Email-System</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Sidebar" asp-action="Contact">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Sidebar" asp-action="About">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+
+            <hr/>
+
+            <footer class="new_footer_area bg_color">
+                <div class="new_footer_top">
+                    <div class="footer_bg">
+                        <div class="footer_bg_one"></div>
+                        <div class="footer_bg_two"></div>
+                    </div>
+                </div>
+                <div class="footer_bottom">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-sm-7">
+                                <p class="mb-0 f_400 text-dark">Copyright! © 2021.. All rights reserved.</p>
+                            </div>
+                            <div class="col-lg-6 col-sm-5 text-right">
+                                <p class="text-dark">Made with <i class="icon_heart"></i> in WDDN Project</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>   
+            
+        }
+    </header>
+    <!--
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - DOT_NET_Core_Email_System - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/sidebar.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

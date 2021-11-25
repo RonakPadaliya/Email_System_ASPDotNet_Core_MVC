@@ -1,4 +1,4 @@
-# Email_System_DotNet_Core_MVC
+# Email-System-ASPNetCORE
 
 This is a web-application developed by Darshan Parmar, Ronak Padaliya and Chandresh Gohel as a project of semester 5 of Computer Engineering at Dharmsinh Desai University. This application is developed in Asp.Net Core Web MVC.
 

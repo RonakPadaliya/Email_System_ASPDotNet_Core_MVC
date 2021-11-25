@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "About";
+}
+
+<h3>About Us</h3>
+<hr/>
+<style>
+    .image {
+        float: left;
+        margin: 5px;
+        width:125px;
+        height:125px;
+    }
+
+    .paragraph {
+        text-align: justify;
+        font-size: 25px;
+    }
+</style>
+<div>
+    <div>
+        <div class="d-flex justify-content-center">
+            <img src="~/college.png"
+                 alt="Dharmsinh Desai University,Nadiad" class="image">
+        </div>
+
+
+        <p class="d-flex justify-content-center text-dark paragraph">
+            Dharmsinh Desai University,Nadiad
+        </p>
+        <p class="d-flex justify-content-center paragraph">
+            College Rd, Chalali, Nadiad, Gujarat 387001
+        </p>
+
+    </div>
+    <div class="font-weight-light p-2 h4">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Online-Email-System is an one web application which is for make conversations with friends,colleagues and family members. This web application is develop using ASP-DOT NET Core technology.
+    </div>
+
+    <div class="font-weight-light p-2 h4 d-flex justify-content-end text-primary">
+        <a asp-controller="Sidebar" asp-action="Contact">Contact Us</a>
+    </div>
+</div>
